@@ -75,13 +75,13 @@ begin
     
     total_string += name_list[1] + ";" + name_list[2] + ";" + name_list[3] + ";" + name_list[4] + ";" + count.to_s + "\n"
   end
+
+  csv_path = UI.savepanel("Save data to...", "C:/Users/hallgrimur/Desktop/VinnuHalli/Documents-Vinna/Forritun/sketchup/eininga_magntaka", "*.csv")
+
   File.write(csv_path, total_string)
-  # CSV.open(csv_path, 'w') do |csv|
-  #   csv << ["Tegund", "Magn"]
-  #   unit_data.each do |name, count|
-  #     csv << [name, count]
-  #   end
-  # end
+  
+
+
   UI.messagebox("CSV export complete!\nSaved to:\n#{csv_path}")
 rescue StandardError => e
   UI.messagebox("Failed to write CSV:\n#{e.message}")
