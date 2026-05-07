@@ -67,7 +67,8 @@ end
 csv_path = "C:/Users/hallgrimur/Desktop/VinnuHalli/Documents-Vinna/Forritun/sketchup/eininga_magntaka/samlokueining_data.csv"
 
 # Write to CSV
-total_string = "Type;thickness;width;length;count\n"
+timestamp = Time.now.strftime("%H:%M:%S:%d:%m:%Y")
+total_string = timestamp + ";;;;\n" + "Type;thickness;width;length;count\n"
 
 begin
   unit_data.each do |name, count|
