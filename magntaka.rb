@@ -68,13 +68,13 @@ csv_path = "C:/Users/hallgrimur/Desktop/VinnuHalli/Documents-Vinna/Forritun/sket
 
 # Write to CSV
 timestamp = Time.now.strftime("%H:%M:%S-%d_%m_%Y")
-total_string = timestamp + "\n\nType;thickness;width;length;count\n"
+total_string = timestamp + "\n\nType;thickness;width;count;length\n"
 
 begin
   unit_data.each do |name, count|
     name_list = name.split(" - ")
-    
-    total_string += name_list[1] + ";" + name_list[2] + ";" + name_list[3] + ";" + name_list[4] + ";" + count.to_s + "\n"
+    length = (name_list[4].to_f/1000).to_s.gsub(".", ",")
+    total_string += name_list[1] + ";" + name_list[2] + ";" + name_list[3] + ";" + count.to_s + ";" + length + "\n"
   end
 
   csv_path = UI.savepanel("Save data to...(don't forget to add .csv)", "C:/Users/hallgrimur/Desktop/VinnuHalli/Documents-Vinna/Forritun/sketchup/eininga_magntaka", "*.csv")
